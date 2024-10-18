@@ -22,15 +22,22 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
-			/**
-			 * EDIT THIS!
-			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime
-			 * you should do your ajax requests or fetch api requests here. Do not use setState() to save data in the
-			 * store, instead use actions, like this:
-			 *
-			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
-			 *
-			 **/
+			if(state.store.contacts.length == 0){
+				state.actions.addContact(
+					{
+						"name": "John Doe",
+						"phone": "666-666-6666",
+						"email": "666@gmail.com",
+						"address": "666 hell dr.",
+					  }
+				)
+				console.log("Contact added")
+			} 
+				state.actions.getContacts()
+			
+				state.actions.createUser()
+				
+	
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
