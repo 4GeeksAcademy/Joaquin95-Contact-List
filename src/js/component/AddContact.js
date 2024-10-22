@@ -10,12 +10,22 @@ const AddContact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
     const newContact = { name, email, phone, address };
-
+    const response = await fetch ("https://playground.4geeks.com/contact/agendas/Joaquin95/contacts", {
+      method: "POST",
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(newContact),
+    });
     
+if(response.ok) {
+  navigate('/');
+}
 
 
-    navigate('/');
   };
 
   return (
